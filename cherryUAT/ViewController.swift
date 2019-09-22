@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         imageAPICall()
         print("cherry pick called")
+        print("this is from prod to uat")
     }
     func imageAPICall(){
         let imageUrl = URL(string:"https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA05982_hires.jpg")
