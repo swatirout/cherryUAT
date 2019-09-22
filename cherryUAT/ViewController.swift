@@ -9,10 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        imageAPICall()
+    }
+    func imageAPICall(){
+        let imageUrl = URL(string:"https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA05982_hires.jpg")
+        let task = URLSession.shared.dataTask(with:imageUrl ?? URL(fileURLWithPath: "")) { (data,response, error) in
+            if error == nil{
+                let loadedImage = UIImage(data:data! )
+                DispatchQueue.main.async {
+                    self.imageView.image = loadedImage
+
+                }
+            }
+        }
+        task.resume()
     }
 
 
